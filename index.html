@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Anushka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #ffe5ec, #e0c3fc);
+      color: #5d3a58;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .hidden { display: none; }
+    h1, h2, p {
+      margin: 10px 0;
+    }
+    .heart-btn {
+      background: #ff9aa2;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+    .heart-btn:hover {
+      background: #ff6f91;
+    }
+    .fade {
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    audio {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="step1" class="fade">
+    <h1 style="font-family: 'Pacifico', cursive; font-size: 2.5em;">Hey Anushka...</h1>
+    <p style="font-size: 1.2em;">I made something for you.</p>
+    <button class="heart-btn" onclick="nextStep('step1', 'step2')">Tap to Open 💖</button>
+  </div>
+
+  <div id="step2" class="hidden">
+    <p class="fade">You had a dream.</p>
+    <p class="fade">You gave it everything.</p>
+    <p class="fade">But sometimes, the world doesn’t play fair...</p>
+    <p class="fade">And it hurts.</p>
+    <p class="fade">Really hurts.</p>
+    <p class="fade">But just because one dream didn’t work out...</p>
+    <p class="fade">...doesn’t mean <em>you</em> failed.</p>
+    <p class="fade"><em>You</em> are still amazing.</p>
+    <button class="heart-btn" onclick="nextStep('step2', 'step3')">Next ➡️</button>
+  </div>
+
+  <div id="step3" class="hidden">
+    <p class="fade">Your dream didn’t dump you — it led you somewhere new.</p>
+    <p class="fade">It showed how strong, passionate, and brave you are.</p>
+    <p class="fade">And now? You get to rise again, no pressure, no rush.</p>
+    <p class="fade">You’re not alone in this.</p>
+    <p class="fade"><strong>I’m here.</strong></p>
+    <button class="heart-btn" onclick="nextStep('step3', 'step4')">Hear My Voice 🎧</button>
+  </div>
+
+  <div id="step4" class="hidden">
+    <p class="fade">Click below. I want to say something, just for you.</p>
+   <audio id="audio1" controls onended="document.getElementById('audio2').play()">
+  <source src="part 1.m4a" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<audio id="audio2" controls style="margin-top: 10px;">
+  <source src="part 2.m4a" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+    <p class="fade" style="margin-top: 20px; font-style: italic;">“I’m always with you. Just feel free with me. Forget about all the pasts, and be happy again.”</p>
+    <p class="fade">❤️ — Ankit </p>
+  </div>
+
+  <script>
+    function nextStep(hideId, showId) {
+      document.getElementById(hideId).classList.add('hidden');
+      const next = document.getElementById(showId);
+      next.classList.remove('hidden');
+      [...next.children].forEach((el, i) => {
+        setTimeout(() => el.classList.add('fade'), i * 500);
+      });
+    }
+  </script>
+</body>
+</html>
